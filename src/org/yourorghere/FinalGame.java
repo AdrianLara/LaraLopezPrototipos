@@ -17,36 +17,21 @@ import javax.swing.JOptionPane;
 
 /**
  * Shutrun.java <BR> author: Brian Paul (converted to Java by Ron Cemer and Sven
- * Goethel) <P>
+ * Goethel)
+ * <P>
  *
  * This version is equal to Brian Paul's version 1.2 1999/10/21
  */
 public class FinalGame implements GLEventListener {
 
-    //public Cube cubo;
-    //public Pyramid piramide;
-    //public static ArrayList<Houses> casas;
-   // public Floor suelo;
-   // public Sphere esfera;
-   // public static Gamer jugador;
-   // public static ArrayList<Enemies> enemigo;
-   // public static Enemies e1;
-   // public static Laberinto l;
-   // public static ArrayList<Bala> balas;
-    public float lim_sup_x;
-    public float lim_inf_x;
-    public float lim_sup_z;
-    public float lim_inf_z;
+    public Floor suelo;
+    public static Gamer jugador;
+    public static ArrayList<Enemies> enemigo;
+    public static Enemies e1;
+    public static Laberinto l;
     public static float cx;
     public static float cy;
     public static float cz;
-    public float a;//Ubicacion casas
-    public float b;
-    public float c;
-    public float d;
-    public float e;
-    public float f;
-    public float g;
     public static int option;
 
     public static void main() {
@@ -75,8 +60,8 @@ public class FinalGame implements GLEventListener {
         ventana.setVisible(true);//Visible la ventana
 
         //Manejador De pulsacion de teclas
-        //Keyboard keylistener = new Keyboard(canvas);
-        //canvas.addKeyListener(keylistener);
+        Keyboard keylistener = new Keyboard(canvas);
+        canvas.addKeyListener(keylistener);
 
     }
 
@@ -87,41 +72,25 @@ public class FinalGame implements GLEventListener {
 
         gl.glEnable(GL.GL_DEPTH_TEST);
 
-        a = -2f;
-        b = 0f;
-
         //Manejador Del Movimiento Del Mouse
-       // Mouse mouselistener = new Mouse();
-       // mouselistener.init(drawable);
+        Mouse mouselistener = new Mouse();
+        mouselistener.init(drawable);
 
         cx = 1f;
         cy = 10f;
         cz = 0f;
         option = 1;
 
-        this.lim_sup_x = 4;
-        this.lim_inf_x = 4;
-        this.lim_sup_z = 4;
-        this.lim_inf_z = 4;
-
-       // suelo = new Floor(gl, 0.7f, -0.3f, 0.7f, 11f, 1f, 0.0f, 1.0f, 0.0f);
-       // esfera = new Sphere(glu, 0.1f, 12, 12);
-       // jugador = new Gamer(gl, 0, 0.4f, 2f, 0.03f, 0.01f, 0.01f, 1f, 1f, 1f);
-
-       // casas = new ArrayList<Houses>();//Instancia Del ArrayList 
-
-       // enemigo = new ArrayList<Enemies>();
-       // 
-       // enemigo.add(new Enemies(gl, -1, 0.5f, 0.2f, 0.04f, 0.004f, 0.002f, 0f, 1f, 1f));
-       // enemigo.add(new Enemies(gl, 1.8f, 0.5f, 0.4f, 0.04f, 0.004f, 0.002f, 0f, 1f, 1f));
-       // enemigo.add(new Enemies(gl, 1.7f, 0.5f, -0.5f, 0.04f, 0.004f, 0.002f, 0f, 1f, 1f));
-       // enemigo.add(new Enemies(gl, 0.4f, 0.5f, -1.8f, 0.04f, 0.004f, 0.002f, 0f, 1f, 1f));
-       // enemigo.add(new Enemies(gl, -1.8f, 0.5f, -1.8f, 0.04f, 0.004f, 0.002f, 0f, 1f, 1f));
-       // enemigo.add(new Enemies(gl, -1f, 0.5f, 1.8f, 0.04f, 0.004f, 0.002f, 0f, 1f, 1f));
-
-
-       // balas = new ArrayList<Bala>();
-       // l = new Laberinto(gl, 0.0f, 0.0f, 0f, 1f, 1f, 1, 0.5f, 0.4f, 0f);
+        suelo = new Floor(gl, 0.7f, -0.3f, 0.7f, 11f, 1f, 0.0f, 1.0f, 0.0f);
+        jugador = new Gamer(gl, 0, 0.4f, 2f, 0.03f, 0.01f, 0.01f, 1f, 1f, 1f);
+        enemigo = new ArrayList<Enemies>();
+        enemigo.add(new Enemies(gl, -1, 0.5f, 0.2f, 0.04f, 0.004f, 0.002f, 0f, 1f, 1f));
+        enemigo.add(new Enemies(gl, 1.8f, 0.5f, 0.4f, 0.04f, 0.004f, 0.002f, 0f, 1f, 1f));
+        enemigo.add(new Enemies(gl, 1.7f, 0.5f, -0.5f, 0.04f, 0.004f, 0.002f, 0f, 1f, 1f));
+        enemigo.add(new Enemies(gl, 0.4f, 0.5f, -1.8f, 0.04f, 0.004f, 0.002f, 0f, 1f, 1f));
+        enemigo.add(new Enemies(gl, -1.8f, 0.5f, -1.8f, 0.04f, 0.004f, 0.002f, 0f, 1f, 1f));
+        enemigo.add(new Enemies(gl, -1f, 0.5f, 1.8f, 0.04f, 0.004f, 0.002f, 0f, 1f, 1f));
+        l = new Laberinto(gl, 0.0f, 0.0f, 0f, 1f, 1f, 1, 0.5f, 0.4f, 0f);
 
     }
 
@@ -130,35 +99,19 @@ public class FinalGame implements GLEventListener {
 
     public void update() {
 
-       // jugador.update();
-
-//        for (Enemies v : enemigo) {
-//           
-//            v.update();
-////            v.perseguir(jugador);
-//        }
-
-//        Iterator<Bala> it = balas.iterator();
-//        while (it.hasNext()) {
-//            Bala b = it.next();
-//            b.avanzar();
-//            if (b.getX() > lim_sup_x || b.getX() < lim_inf_x || b.getZ() > lim_sup_z || b.getZ() < lim_inf_z) {
-//                balas.remove(b);
-//            }
-//        }
-       /* Iterator<Enemies> ite = enemigo.iterator();
-        while (ite.hasNext()) {
-            Enemies e = ite.next();
-            e.update();
-            if (e.colisionJugador()) {
-                ite.remove();
+        jugador.update();
+        /* Iterator<Enemies> ite = enemigo.iterator();
+         while (ite.hasNext()) {
+         Enemies e = ite.next();
+         e.update();
+         if (e.colisionJugador()) {
+         ite.remove();
                                    
-            }
-            if(enemigo.isEmpty()){
-                JOptionPane.showMessageDialog(null, "YOU WIN");           
-            }
-        }*/
-
+         }
+         if(enemigo.isEmpty()){
+         JOptionPane.showMessageDialog(null, "YOU WIN");           
+         }
+         }*/
 
     }
 
@@ -170,22 +123,17 @@ public class FinalGame implements GLEventListener {
         gl.glLoadIdentity(); //Matriz identidad para borrar
         gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT); //Metodo Limpia la iterraccion anterior
 
-       /* l.drawFloor();
+        l.drawFloor();
 
-//        suelo.drawFloor();
-//
+        suelo.drawFloor();
+
         jugador.drawGamer();
-//        
-        for (Enemies v : enemigo) {
-            v.drawGamer();
-        }
-        
-//        
-        for (Bala b : balas) {
-            b.drawbala();
-        }
-        //vista de camara
+        /*
+         for (Enemies v : enemigo) {
+         v.drawGamer();
+         }*/
 
+        //vista de camara
         gl.glMatrixMode(GL.GL_PROJECTION); //Matriz De Proyecciones
         gl.glLoadIdentity(); //Todas las perspectivas se representan medante matrices
         glu.gluPerspective(45f, 1f, 0.2f, 20f);
@@ -203,9 +151,10 @@ public class FinalGame implements GLEventListener {
                 System.out.println("Bienvenido");
                 break;
 
-        }*/
+        }
 
-        //glu.gluLookAt(cx, cy, cz, 0f, 0f, 0f, 0f, 1f, 0f);
+        glu.gluLookAt(cx, cy, cz, 0f, 0f, 0f, 0f, 1f, 0f);
+        System.out.println(option);
         //glu.gluLookAt(3f, 3f, 3f, jugador.getX(), jugador.getY(), jugador.getZ(), 0f, 1f, 0f);
         //glu.gluLookAt(jugador.getX(), jugador.getY() - 0.1f, jugador.getZ(), jugador.getX() + Math.cos(jugador.angle) * 2.0f, jugador.getY(), jugador.getZ() + Math.sin(jugador.angle) * 2.0f, 0, 2, 0);
     }
