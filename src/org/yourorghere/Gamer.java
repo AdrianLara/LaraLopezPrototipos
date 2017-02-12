@@ -62,7 +62,7 @@ public class Gamer {
         this.b = b;
         try {
 
-            cara = TextureIO.newTexture(new File("src/org/yourorghere/images.jpg"), true);
+            cara = TextureIO.newTexture(new File("src/Images/images.jpg"), true);
 
         } catch (IOException e) {
             System.err.print("No se puede cargar textura" + e);
@@ -134,8 +134,8 @@ public class Gamer {
     }
 
     /**
-     * @brief Método avanzar para controlar los movimientos lineales hacia
-     * atrás del Actor
+     * @brief Método avanzar para controlar los movimientos lineales hacia atrás
+     * del Actor
      */
     public void retroceder() {
 
@@ -166,15 +166,16 @@ public class Gamer {
     public float getZ() {
         return z;
     }
-    
+
     /**
-     * @brief Método para detectar las colisiones entre los diferentes objetos del escenario
+     * @brief Método para detectar las colisiones entre los diferentes objetos
+     * del escenario
      * @param nx Umbral de choque en el eje X
      * @param nz Umbral de choque en el eje Y
      * @return Valor de verdad para definir acciones posteriores
-     */    
+     */
     public boolean colision(float nx, float nz) {
-        boolean salida = false;        
+        boolean salida = false;
         for (Cube l : FinalGame.l.paredesZ) {
             float umbralx = w / 2 + l.getW() / 2;
             float umbralz = w / 2 + 0.1f;

@@ -1,10 +1,10 @@
 /**
- * @brief Clase Cube que es una optimizacion para la gráfica de un cubo en OpenGL
+ * @brief Clase Cube que es una optimizacion para la gráfica de un cubo en
+ * OpenGL
  */
 package org.yourorghere;
 
 import javax.media.opengl.GL;
-import java.io.File;
 import com.sun.opengl.util.texture.Texture;
 import com.sun.opengl.util.texture.TextureIO;
 import java.io.IOException;
@@ -27,10 +27,11 @@ public class Cube {
     private float b;
     private float angle;
     private Texture cara;
-    
+
     /**
-     * @brief Cube es un constructor que recibe varios parámetros para la implementacion de nuevos
-     * objetos con dichas características que nos ayudarán en la generación de objetos 3D
+     * @brief Cube es un constructor que recibe varios parámetros para la
+     * implementacion de nuevos objetos con dichas características que nos
+     * ayudarán en la generación de objetos 3D
      * @param gl Objeto Gl para los gráficos
      * @param x Posición en x
      * @param y Posición en y
@@ -43,7 +44,7 @@ public class Cube {
      * @param g Color canal G
      * @param b Color canal B
      * @param cara Elemento para texturizar
-     * 
+     *
      */
     public Cube(GL gl, float x, float y, float z, float w, float h, float d, float angle, float r, float g, float b, Texture cara) {
 
@@ -58,13 +59,13 @@ public class Cube {
         this.g = g;
         this.b = b;
         this.angle = angle;
-        this.cara=cara;
+        this.cara = cara;
     }
 
     /**
-     * @brief Método DrawCube que dibuja una nueva figura tipo cubo de acuerdo a las especificaciones
-     * del constructor
-     * @param a 
+     * @brief Método DrawCube que dibuja una nueva figura tipo cubo de acuerdo a
+     * las especificaciones del constructor
+     * @param a
      * @return Figura 3D tipo cubo
      */
     public void DrawCube(float a) {
@@ -79,7 +80,6 @@ public class Cube {
         gl.glBegin(GL.GL_QUADS); //Cara Frontal
         gl.glColor3f(r, g, b);
 
-        
         gl.glTexCoord2f(0, 0);
         gl.glVertex3f(x - w / 2, y + h / 2, z - d / 2);
 
@@ -134,7 +134,7 @@ public class Cube {
         gl.glVertex3f(x + w / 2, y - h / 2, z - d / 2);
         gl.glTexCoord2f(0, 1);
         gl.glVertex3f(x + w / 2, y - h / 2, z + d / 2);
-        gl.glTexCoord2f(1 , 0);
+        gl.glTexCoord2f(1, 0);
         gl.glVertex3f(x + w / 2, y + h / 2, z + d / 2);
         gl.glEnd();
         cara.disable();
@@ -153,7 +153,7 @@ public class Cube {
         gl.glVertex3f(x - w / 2, y + h / 2, z + d / 2);
         gl.glEnd();
         cara.disable();
-        
+
         cara.enable();
         cara.bind();
         gl.glBegin(GL.GL_QUADS); //Cara abajo
@@ -172,7 +172,7 @@ public class Cube {
 
         gl.glPopMatrix();
     }
-    
+
     public void DrawCube() {
         DrawCube(0);
     }
@@ -196,7 +196,8 @@ public class Cube {
     public float getZ() {
         return z;
     }
-    public float getD(){
+
+    public float getD() {
         return d;
     }
 }

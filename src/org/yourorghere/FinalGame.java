@@ -20,7 +20,6 @@ import javax.swing.JOptionPane;
  *
  * Developed by LL (Lara Adrian, López Paula)
  */
-
 /**
  * @author Lara Adrian
  * @autor Lopez Paula

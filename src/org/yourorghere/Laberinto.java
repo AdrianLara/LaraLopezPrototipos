@@ -80,7 +80,7 @@ public class Laberinto {
         p41 = new Cube(gl, x + 1.2f, y + h / 2, z + d * 2, w * 1.6f, h, d / 20, 0, 0.4f, 0.3f, 0.01f, cerramiento);
 
         /**
-         * Paredes laterales parte superior 
+         * Paredes laterales parte superior
          */
         pz1 = new Cube(gl, x - 1.3f, y + h / 2, z + 1.3f, w * 1.4f, h, d / 20, 0, 0, 0.5f, 0, paredes);
         pz2 = new Cube(gl, x - 1.3f, y + h / 2, z + 1f, w / 2, h, d / 20, 0, 0, 0.5f, 0, paredes);
@@ -91,7 +91,7 @@ public class Laberinto {
         pz7 = new Cube(gl, x - 1.2f, y + h / 2, z - 1f, w * 0.6f, h, d / 20, 0, 0, 0.5f, 0, paredes);
 
         /**
-         * Paredes laterales parte Inferior 
+         * Paredes laterales parte Inferior
          */
         p1z = new Cube(gl, x + 1.2f, y + h / 2, z + 1.5f, w + 0.5f, h, d / 20, 0, 0, 0.5f, 0, paredes);
         p2z = new Cube(gl, x + 1.5f, y + h / 2, z + 1f, w / 2f, h, d / 20, 0, 0, 0.5f, 0, paredes);
@@ -102,9 +102,9 @@ public class Laberinto {
         p7z = new Cube(gl, x + 0.2f, y + h / 2, z - 1.5f, w * 1.5f, h, d / 20, 0, 0, 0.5f, 0, paredes);
         p8z = new Cube(gl, x + 1.5f, y + h / 2, z - 1.5f, w / 2f, h, d / 20, 0, 0, 0.5f, 0, paredes);
 
-       /**
-         * Paredes horizontales parte superior 
-         */       
+        /**
+         * Paredes horizontales parte superior
+         */
         px1 = new Cube(gl, x - 0.6f, y + h / 2, z + 0.6f, w / 20, h, d * 1.2f, 0, 1f, 1f, 0f, paredes);
         px2 = new Cube(gl, x - 1.6f, y + h / 2, z + 0.4f, w / 20, h, d * 1.2f, 0, 1f, 1f, 0f, paredes);
         px3 = new Cube(gl, x - 1.5f, y + h / 2, z - 0.8f, w / 20, h, d * 0.6f, 0, 1f, 1f, 0f, paredes);
@@ -112,7 +112,7 @@ public class Laberinto {
         px5 = new Cube(gl, x, y + h / 2, z + 0.5f, w / 20, h, d * 2, 0, 1f, 1f, 0f, paredes);
 
         /**
-         * Paredes horizontales parte inferior 
+         * Paredes horizontales parte inferior
          */
         p1x = new Cube(gl, x + 0.75f, y + h / 2, z + 1.1f, w / 20, h, d * 1.1f, 0, 1f, 1f, 0f, paredes);
         p2x = new Cube(gl, x + 1.4f, y + h / 2, z + 0.8f, w / 20, h, d / 2, 0, 1f, 1f, 0f, paredes);
@@ -157,7 +157,7 @@ public class Laberinto {
         paredesZ.add(p41);
 
     }
-    
+
     /**
      * Método para dibujar el escenario
      */

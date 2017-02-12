@@ -10,23 +10,25 @@ import javax.media.opengl.GLAutoDrawable;
 import javax.media.opengl.GLEventListener;
 
 /**
- *@brief Desarrollo de la clase mouse
+ * @brief Desarrollo de la clase mouse
  * @author Lara_Lopez
  */
-public class Mouse implements MouseListener,MouseMotionListener,GLEventListener {
+public class Mouse implements MouseListener, MouseMotionListener, GLEventListener {
+
     float oldx;///<Ultima posición del mouse    
+
     public void init(GLAutoDrawable drawable) {
-       oldx = 0;
-       drawable.addMouseMotionListener(this);
-    }
-     
-    public void mouseClicked(MouseEvent me) {   
+        oldx = 0;
+        drawable.addMouseMotionListener(this);
     }
 
-    public void mousePressed(MouseEvent me) {  
+    public void mouseClicked(MouseEvent me) {
     }
 
-    public void mouseReleased(MouseEvent me) {  
+    public void mousePressed(MouseEvent me) {
+    }
+
+    public void mouseReleased(MouseEvent me) {
     }
 
     public void mouseEntered(MouseEvent me) {
@@ -37,26 +39,26 @@ public class Mouse implements MouseListener,MouseMotionListener,GLEventListener 
 
     public void mouseDragged(MouseEvent me) {
     }
-    
+
     /**
      * @brief Método para control con el mouse cuando se mueve sobre la pantalla
-     * @param me  Captura la posición del mouse
+     * @param me Captura la posición del mouse
      */
-    public void mouseMoved(MouseEvent me) {  
-        
+    public void mouseMoved(MouseEvent me) {
+
         float mousex = me.getX();
-        FinalGame.jugador.angle += (mousex-oldx)/100;
-        oldx=mousex;
-        
+        FinalGame.jugador.angle += (mousex - oldx) / 100;
+        oldx = mousex;
+
     }
 
     public void display(GLAutoDrawable drawable) {
     }
 
-    public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {  
+    public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
     }
 
-    public void displayChanged(GLAutoDrawable drawable, boolean modeChanged, boolean deviceChanged) { 
+    public void displayChanged(GLAutoDrawable drawable, boolean modeChanged, boolean deviceChanged) {
     }
-    
+
 }

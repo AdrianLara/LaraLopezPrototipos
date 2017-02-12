@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *@brief Clase para el manejo de la interfaz de bienvenida al usuario
  */
 package Menu;
 
@@ -12,8 +10,8 @@ import javax.swing.JPanel;
 import org.yourorghere.FinalGame;
 
 /**
- *
- * @author S7PC21
+ * @brief Menú del juego
+ * @author Lara_Lopez
  */
 public class Menu extends javax.swing.JFrame {
 
@@ -22,16 +20,16 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
-         setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
         setResizable(false);
         setTitle("The maze runner");
-((JPanel)getContentPane()).setOpaque(false);
-        ImageIcon uno=new ImageIcon(this.getClass().getResource("/Images/fondo.jpg"));
-        JLabel fondo= new JLabel();
+        ((JPanel) getContentPane()).setOpaque(false);
+        ImageIcon uno = new ImageIcon(this.getClass().getResource("/Images/fondo.jpg"));
+        JLabel fondo = new JLabel();
         fondo.setIcon(uno);
-        getLayeredPane().add(fondo,JLayeredPane.FRAME_CONTENT_LAYER);
-        fondo.setBounds(0,0,uno.getIconWidth(),uno.getIconHeight());
-        
+        getLayeredPane().add(fondo, JLayeredPane.FRAME_CONTENT_LAYER);
+        fondo.setBounds(0, 0, uno.getIconWidth(), uno.getIconHeight());
+
     }
 
     /**
@@ -86,9 +84,13 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+     * Llamada a la ventan principal del juego
+     *
+     * @param evt
+     */
     private void playActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playActionPerformed
-        FinalGame c= new FinalGame();
+        FinalGame c = new FinalGame();
         c.main();
         this.dispose();
     }//GEN-LAST:event_playActionPerformed

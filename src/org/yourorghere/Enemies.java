@@ -7,14 +7,15 @@ import java.util.Random;
 import javax.media.opengl.GL;
 
 /**
- *@brief Desarrollo de la clase Enemies
+ * @brief Desarrollo de la clase Enemies
  * @author Lara_Lopez
  */
 public class Enemies extends Gamer {
-    
+
     /**
-     * @brief Enemies es un constructor que recibe parametros heredados de la clase Gamer
-     * 
+     * @brief Enemies es un constructor que recibe parametros heredados de la
+     * clase Gamer
+     *
      * @param gl Objeto Gl para los gráficos
      * @param x Posición en x
      * @param y Posición en y
@@ -24,7 +25,7 @@ public class Enemies extends Gamer {
      * @param r Color canal R
      * @param g Color canal G
      * @param b Color canal B
-     * 
+     *
      */
     public Enemies(GL gl, float x, float y, float z, float w, float h, float v, float r, float g, float b) {
         super(gl, x, y, z, w, h, v, r, g, b);
@@ -43,8 +44,9 @@ public class Enemies extends Gamer {
     }
 
     /**
-     * @brief Método perseguir definido para seguir a un objeto recibido como parámetro
-     * @param g1 
+     * @brief Método perseguir definido para seguir a un objeto recibido como
+     * parámetro
+     * @param g1
      */
     public void perseguir(Gamer g1) {
 
@@ -60,8 +62,6 @@ public class Enemies extends Gamer {
             z -= v;
         }
 
-
-
     }
 
     public float Random() {
@@ -71,7 +71,8 @@ public class Enemies extends Gamer {
     }
 
     /**
-     * @brief Método colisionJugador para comprobar el momento en que dos objetos chocan
+     * @brief Método colisionJugador para comprobar el momento en que dos
+     * objetos chocan
      * @return Verdadero o Falso según sea la colisión
      */
     public boolean colisionJugador() {
