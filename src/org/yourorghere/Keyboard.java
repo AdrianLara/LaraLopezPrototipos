@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *@ Clase Keyboard para manejar las acciones del juego a través de los eventos del teclado 
  */
 package org.yourorghere;
 
@@ -12,24 +10,29 @@ import javax.media.opengl.GLCanvas;
 import javax.media.opengl.glu.GLU;
 
 /**
- *
- * @author PC
+ * @brief Desarrollo del Keyboard para el manejo del teclado 
+ * @author Lara_Lopez
  */
 public class Keyboard implements KeyListener {
 
     private GLCanvas canvas;
     public boolean[] keybuffer;
-    //GL gl = drawable.getGL();
-    GLU glu = new GLU();//Contiene funciones de mas alto nivel 
-
+    GLU glu = new GLU();
+    
+    /**
+     * @brief Conección del canvas con el teclado para la captura y entrada de eventos
+     * @param canvas 
+     */
     public Keyboard(GLCanvas canvas) {
         this.canvas = canvas;
         keybuffer = new boolean[256];
     }
-
+    
+    /**
+     * @brief Método para la distribución de las telas
+     * @param e Asignación de teclas
+     */
     public void keyTyped(KeyEvent e) {
-        //System.out.println(e);
-
        
         if (keybuffer['w']) {
             FinalGame.jugador.avanzar();
@@ -83,6 +86,10 @@ public class Keyboard implements KeyListener {
         }
     }
 
+    /**
+     * @brief Comprobación de las teclas presionadas
+     * @param e Lectura de la tecla presionada
+     */
     public void keyPressed(KeyEvent e) {
         keybuffer[e.getKeyChar()] = true;
     }

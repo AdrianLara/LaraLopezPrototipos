@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @brief Clase Cube que es una optimizacion para la gráfica de un cubo en OpenGL
  */
 package org.yourorghere;
 
@@ -12,8 +10,8 @@ import com.sun.opengl.util.texture.TextureIO;
 import java.io.IOException;
 
 /**
- *
- * @author PC
+ * @brief Desarrollo de la clase Cube
+ * @author Lara_Lopez
  */
 public class Cube {
 
@@ -21,15 +19,32 @@ public class Cube {
     public float x;
     public float y;
     public float z;
-    private float w;//ANCHURA
-    private float h;//ALTURA
-    private float d;//PROFUNDIDAD
-    private float r;//ROJO
-    private float g;//VERDE
-    private float b;//AZUL
-    private float angle;//ANGULO ROTACION
-//    private Texture cara1, cara2, cara3, cara4, cara5, cara6;
+    private float w;
+    private float h;
+    private float d;
+    private float r;
+    private float g;
+    private float b;
+    private float angle;
     private Texture cara;
+    
+    /**
+     * @brief Cube es un constructor que recibe varios parámetros para la implementacion de nuevos
+     * objetos con dichas características que nos ayudarán en la generación de objetos 3D
+     * @param gl Objeto Gl para los gráficos
+     * @param x Posición en x
+     * @param y Posición en y
+     * @param z Posición en z
+     * @param w Anchura del objeto
+     * @param h Altura del objeto
+     * @param d Espesor del objeto
+     * @param angle Angulo de dirección
+     * @param r Color canal R
+     * @param g Color canal G
+     * @param b Color canal B
+     * @param cara Elemento para texturizar
+     * 
+     */
     public Cube(GL gl, float x, float y, float z, float w, float h, float d, float angle, float r, float g, float b, Texture cara) {
 
         this.gl = gl;
@@ -44,20 +59,14 @@ public class Cube {
         this.b = b;
         this.angle = angle;
         this.cara=cara;
-//        try {
-//            //Se indica la localizacion de la figura                
-//            cara1 = TextureIO.newTexture(new File("src/org/yourorghere/images.jpg"), true);
-//            cara2 = TextureIO.newTexture(new File("src/org/yourorghere/images.jpg"), true);
-//            cara3 = TextureIO.newTexture(new File("src/org/yourorghere/images.jpg"), true);
-//            cara4 = TextureIO.newTexture(new File("src/org/yourorghere/images.jpg"), true);
-//            cara5 = TextureIO.newTexture(new File("src/org/yourorghere/images.jpg"), true);
-//            cara6 = TextureIO.newTexture(new File("src/org/yourorghere/images.jpg"), true);
-//        } catch (IOException e) {
-//            System.err.print("No se puede cargar textura" + e);
-//            System.exit(1);
-//        }
     }
 
+    /**
+     * @brief Método DrawCube que dibuja una nueva figura tipo cubo de acuerdo a las especificaciones
+     * del constructor
+     * @param a 
+     * @return Figura 3D tipo cubo
+     */
     public void DrawCube(float a) {
 
         gl.glPushMatrix();
@@ -163,7 +172,7 @@ public class Cube {
 
         gl.glPopMatrix();
     }
-
+    
     public void DrawCube() {
         DrawCube(0);
     }

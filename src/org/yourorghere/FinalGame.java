@@ -16,15 +16,26 @@ import javax.media.opengl.glu.GLU;
 import javax.swing.JOptionPane;
 
 /**
- * Shutrun.java <BR> author: Brian Paul (converted to Java by Ron Cemer and Sven
- * Goethel)
- * <P>
+ * Copyright (c) 2017, Lara_Lopez Software, Inc. All Rights Reserved.
  *
- * This version is equal to Brian Paul's version 1.2 1999/10/21
+ * Developed by LL (Lara Adrian, López Paula)
+ */
+
+/**
+ * @author Lara Adrian
+ * @autor Lopez Paula
+ * @version 2.0
+ * @note prototipos UCE.
+ * @brief Clase FinalGame en donde se ubican los módulos principales para la
+ * estructura de un Juego de Video
+ *
+ * Video Juego Maze Runner implementado con lenguaje Java utilizando librería
+ * OpenGL para manejar de una mejor manera el entorno gráfico
  */
 public class FinalGame implements GLEventListener {
 
-    public Floor suelo;
+    /*Desarrollo de la clase Finalgame*/
+    ///Lara_Lopez
     public static Gamer jugador;
     public static ArrayList<Enemies> enemigo;
     public static Enemies e1;
@@ -34,9 +45,13 @@ public class FinalGame implements GLEventListener {
     public static float cz;
     public static int option;
 
+    /**
+     * @brief Método Principal para generación del canvas y demás elementos del
+     * juego de video
+     */
     public static void main() {
 
-        Frame ventana = new Frame("JOGL app"); //Metodo clase Frame
+        Frame ventana = new Frame("Maze Runner"); //Metodo clase Frame
         ventana.setSize(1000, 700);//Tamaño De La ventana
         ventana.addWindowListener(new WindowAdapter() { //Manejador de Ventanas Y Cerrar Ventana
             @Override
@@ -65,23 +80,22 @@ public class FinalGame implements GLEventListener {
 
     }
 
+    /**
+     * @brief Método donde se inicializan todas las variables a usar en nuestro
+     * juego de video
+     * @param drawable Objeto tipo GL para la renderización
+     */
     public void init(GLAutoDrawable drawable) {
-
         GL gl = drawable.getGL();
         GLU glu = new GLU();
-
-        gl.glEnable(GL.GL_DEPTH_TEST);
-
-        //Manejador Del Movimiento Del Mouse
-        Mouse mouselistener = new Mouse();
+        gl.glEnable(GL.GL_DEPTH_TEST); ///<Limpia la pantalla       
+        Mouse mouselistener = new Mouse();///<Objeto tipo Mouse para las controles de entrada por el mouse
         mouselistener.init(drawable);
-
         cx = 1f;
         cy = 10f;
         cz = 0f;
         option = 1;
 
-        suelo = new Floor(gl, 0.7f, -0.3f, 0.7f, 11f, 1f, 0.0f, 1.0f, 0.0f);
         jugador = new Gamer(gl, 0, 0.4f, 2f, 0.03f, 0.01f, 0.01f, 1f, 1f, 1f);
         enemigo = new ArrayList<Enemies>();
         enemigo.add(new Enemies(gl, -1, 0.5f, 0.2f, 0.04f, 0.004f, 0.002f, 0f, 1f, 1f));
@@ -91,51 +105,54 @@ public class FinalGame implements GLEventListener {
         enemigo.add(new Enemies(gl, -1.8f, 0.5f, -1.8f, 0.04f, 0.004f, 0.002f, 0f, 1f, 1f));
         enemigo.add(new Enemies(gl, -1f, 0.5f, 1.8f, 0.04f, 0.004f, 0.002f, 0f, 1f, 1f));
         l = new Laberinto(gl, 0.0f, 0.0f, 0f, 1f, 1f, 1, 0.5f, 0.4f, 0f);
-
     }
 
     public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
     }
 
+    /**
+     * @brief Método update donde se actualizan las acciones del jugador y será
+     * llamado en cada renderización
+     */
     public void update() {
-
         jugador.update();
-        /* Iterator<Enemies> ite = enemigo.iterator();
-         while (ite.hasNext()) {
-         Enemies e = ite.next();
-         e.update();
-         if (e.colisionJugador()) {
-         ite.remove();
-                                   
-         }
-         if(enemigo.isEmpty()){
-         JOptionPane.showMessageDialog(null, "YOU WIN");           
-         }
-         }*/
-
+        Iterator<Enemies> ite = enemigo.iterator();
+        while (ite.hasNext()) {
+            Enemies e = ite.next();
+            e.update();
+            if (e.colisionJugador()) {
+                ite.remove();
+            }
+            if (enemigo.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "YOU WIN");
+            }
+        }
     }
 
+    /**
+     * @brief Método Render el que se encargará de dibujar el escenario con
+     * todos sus componentes y actualizaciones
+     * @param drawable Objeto de tipo GL para las renderizaciones
+     */
     public void render(GLAutoDrawable drawable) {
 
         GL gl = drawable.getGL();
-        GLU glu = new GLU();//Contiene funciones de mas alto nivel 
-        gl.glMatrixMode(GL.GL_MODELVIEW);//Matriz para dibujar, matriz vista de modelo
-        gl.glLoadIdentity(); //Matriz identidad para borrar
-        gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT); //Metodo Limpia la iterraccion anterior
+        GLU glu = new GLU();///<Contiene funciones de mas alto nivel 
+        gl.glMatrixMode(GL.GL_MODELVIEW);///<Matriz para dibujar, matriz vista de modelo
+        gl.glLoadIdentity(); ///<Matriz identidad para borrar
+        gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT); ///<Metodo Limpia la iterraccion anterior
 
-        l.drawFloor();
-
-        suelo.drawFloor();
-
+        l.drawLaberinto();
         jugador.drawGamer();
-        /*
-         for (Enemies v : enemigo) {
-         v.drawGamer();
-         }*/
+        for (Enemies v : enemigo) {
+            v.drawGamer();
+        }
+        /**
+         * Vista de Cámara
+         */
 
-        //vista de camara
-        gl.glMatrixMode(GL.GL_PROJECTION); //Matriz De Proyecciones
-        gl.glLoadIdentity(); //Todas las perspectivas se representan medante matrices
+        gl.glMatrixMode(GL.GL_PROJECTION); ///< Matriz De Proyecciones para la cámara
+        gl.glLoadIdentity();
         glu.gluPerspective(45f, 1f, 0.2f, 20f);
         switch (option) {
 
@@ -152,13 +169,13 @@ public class FinalGame implements GLEventListener {
                 break;
 
         }
-
-        glu.gluLookAt(cx, cy, cz, 0f, 0f, 0f, 0f, 1f, 0f);
-        System.out.println(option);
-        //glu.gluLookAt(3f, 3f, 3f, jugador.getX(), jugador.getY(), jugador.getZ(), 0f, 1f, 0f);
-        //glu.gluLookAt(jugador.getX(), jugador.getY() - 0.1f, jugador.getZ(), jugador.getX() + Math.cos(jugador.angle) * 2.0f, jugador.getY(), jugador.getZ() + Math.sin(jugador.angle) * 2.0f, 0, 2, 0);
     }
 
+    /**
+     * @brief Método Display en el que se llama al método update() y render()
+     * @param drawable Objeto tipo GL para actualización y renderización
+     * @return Devuelve las pantallas del juego
+     */
     public void display(GLAutoDrawable drawable) {
         update();
         render(drawable);

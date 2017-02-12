@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *@brief Clase Mouse para el movimiento del Actor principal
  */
 package org.yourorghere;
 
@@ -12,12 +10,11 @@ import javax.media.opengl.GLAutoDrawable;
 import javax.media.opengl.GLEventListener;
 
 /**
- *
- * @author S7PC21
+ *@brief Desarrollo de la clase mouse
+ * @author Lara_Lopez
  */
 public class Mouse implements MouseListener,MouseMotionListener,GLEventListener {
-    float oldx;
-    
+    float oldx;///<Ultima posición del mouse    
     public void init(GLAutoDrawable drawable) {
        oldx = 0;
        drawable.addMouseMotionListener(this);
@@ -40,9 +37,13 @@ public class Mouse implements MouseListener,MouseMotionListener,GLEventListener 
 
     public void mouseDragged(MouseEvent me) {
     }
-
+    
+    /**
+     * @brief Método para control con el mouse cuando se mueve sobre la pantalla
+     * @param me  Captura la posición del mouse
+     */
     public void mouseMoved(MouseEvent me) {  
-        //Metodo que s ejecuta cuando movemos el raton sobre el objeto drawable
+        
         float mousex = me.getX();
         FinalGame.jugador.angle += (mousex-oldx)/100;
         oldx=mousex;
